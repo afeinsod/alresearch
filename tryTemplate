@@ -1,0 +1,57 @@
+<form name="xastropy" action="/formTest" method="post" enctype="multipart/form-data">
+
+<div class="row"><h1 class="span6">Astronomy Analysis</h1></div>
+
+<table border="1" class="table span12">
+<thead>
+  <tr>
+  
+  <th id="dataChoices"><center>Data Choices</center>
+  </th>
+  <th id="modelChoices"><center>Model Choices</center>
+  </th>
+  <th id="modelDepOpt"><center>Model-Dependant Options</center> </th>
+  <th id="analysisOptions"><center>Analysis Options</center></th>
+  <th id="outputOptions"><center>Output Options</center>
+  </th>
+  
+</tr></thead>
+<tbody>
+<tr class>
+  <td><span><p><label class="">Choose data source(s):</label> </p>
+      <input type="checkbox" name="k13" value="k13">K13<br>
+      <input type="checkbox" name="r13" value="r13">R13<br>
+      <input type="checkbox" name="k02" value="k02">K02<br>
+      <input type="checkbox" name="opb07" value="opb07">OPB07<br>
+      <input type="checkbox" name="pw09" value="pw09">PW09<br>
+      <input type="checkbox" name="n12" value="n12">N12<br>
+    </select></span>
+  </td>
+  <td><label>Model Type:</label> <select name="modelType" class="singleselect" id="modelType">
+      <option value="Type1">Type1 </option>
+      <option value="Type2">Type2 </option>
+      <option value="Type3">Type3 </option>
+      </select>
+  </td>
+  <td> 
+      <p>User email: <input type="text" name="useremail"></p>
+  </td>
+ 
+
+<td>
+<input type="checkbox" name="MCMC" value="MCMC">MCMC<br>
+<input type="checkbox" name="X" value="X">Chi square analysis 
+ </td>
+ 
+ <td>
+<input type="checkbox" name="config" value="config">config<br>
+<input type="checkbox" name="dtable" value="dtable">data table 
+ </td>
+ </tr>
+ 
+</tbody>
+</table>
+<input type="submit" value="Submit data for analysis"/>
+</form>
+<br/><br/>
+
