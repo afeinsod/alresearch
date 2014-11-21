@@ -1,14 +1,13 @@
 ## Alix Feinsod
 ## Python form using template
-## Updated November 6, 2014
+## Updated November 20, 2014
 ## uses tryTemplate to take in data!!!
 
 from bottle import route, run, template, post, request
 
 @route('/formTest')
 def formTest():
-    output = template('tryTemplate')
-    return output
+    return template('tryTemplate')
     
 @route('/formTest', method='POST')
 def do_response():
