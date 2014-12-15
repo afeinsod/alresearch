@@ -20,7 +20,7 @@
 <tr class>
   <td><span><p><label class="">Choose data source(s):</label> </p>
   
-  	<select multiple id="DataSource" name = "dataSource[]" size="6">
+  	<select multiple id="DataSource" name = "dataSource" size="6">
 	<option name="k13" value="k13">K13</option>
 	<option name="r13" value="r13">R13</option>
 	<option name="k02" value="k02">K02</option>
@@ -30,7 +30,7 @@
 	
     </span>
   </td>
-  <td><label>Model Type:</label> <select name="modelType[]" class="singleselect" id="modelType">
+  <td><label>Model Type:</label> <select name="modelType" class="singleselect" id="modelType">
       <option value="Type1">Type1 </option>
       <option value="Type2">Type2 </option>
       <option value="Type3">Type3 </option>
@@ -42,14 +42,14 @@
  
 
 <td>
-	<select name="AnalysisOptions[]" size="2">
+	<select name="AnalysisOptions" size="2">
 	<option name="MCMC" value="MCMC">MCMC</option>
 	<option name="X" value="X">Chi square analysis</option>
 	</select>
  </td>
  
  <td>
- <select name="OutputOptions[]" size="2">
+ <select name="OutputOptions" size="2">
 	<option name="config" value="config">config</option>
 	<option name="dtable" value="dtable">Data Table</option>
 	</select>
@@ -58,7 +58,7 @@
  
 </tbody>
 </table>
-<input type="submit" onclick="makeArrays()" value="Submit data for analysis"/>
+<input type="submit" value="Submit data for analysis"/>
 </form>
 <br/><br/>
  		<form name="uploadForm">
@@ -78,30 +78,6 @@ option.name = y;
 x.add(option);
 }
 
-function makeArrays() {
-	var dataSources = []
-	var options = []
-	options = request.forms.getElement("dataSource[]").options
-	for x in options.options:
-		if x.selected:
-			dataSources.append(x.value)
-		else:
-			dataSources.append('no')
-	
-	options = request.forms.get("modelType[]")
-	for x in options:
-		if x.selected:
-			modelType = x.value
-	
-	options = request.forms.get("AnalysisOptions[]")
-	for x in options:
-		if x.selected: 
-			analysis = x.value
-	
-	options = request.forms.get("OutputOptions[]")
-	for x in options:
-		if x.selected:
-			output = x.value
 	
 </script>
 
