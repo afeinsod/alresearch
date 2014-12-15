@@ -1,6 +1,6 @@
 ## Alix Feinsod
 ## Python form using template
-## Updated December 11, 2014
+## Updated December 15, 2014
 ## uses tryTemplate to take in data!!!
 
 from bottle import route, run, template, post, request
@@ -12,7 +12,8 @@ from email.utils import COMMASPACE, formatdate
 from email import encoders
 from array import array
 
-from xastropy.stats import mcmc
+
+from xastropy.stats import mcmc 
 
 
 @route('/formTest')
@@ -21,35 +22,19 @@ def formTest():
     
 @route('/formTest', method='POST')
 def do_response():
-	dataSources = []
-	options = []
-	options = request.forms.getElement("dataSource[]").options
-	for x in options.options:
-		if x.selected:
-			dataSources.append(x.value)
-		else:
-			dataSources.append('no')
 	
-	options = request.forms.get("modelType[]")
-	for x in options:
-		if x.selected:
-			modelType = x.value
+	dataSources = request.forms.getall('dataSource')
+	models = request.forms.getall('modelType')
+	modelType = models[0]
+	analyses = request.forms.getall('AnalysisOptions')
+	analysis = analyses[0]
+	outputs = request.forms.getall('OutputOptions')
+	output = outputs[0]
 	
-	options = request.forms.get("AnalysisOptions[]")
-	for x in options:
-		if x.selected: 
-			analysis = x.value
-	
-	options = request.forms.get("OutputOptions[]")
-	for x in options:
-		if x.selected:
-			output = x.value
-	
-
 	useremail   = request.forms.get('useremail')
 
 	time = mcmc.test()
-	msg     = output
+	msg     = str(time)
    	
    	smtp = smtplib.SMTP()
    	smtp.connect('smtp.gmail.com', 587)
