@@ -21,19 +21,20 @@
   <td><span><p><label class="">Choose data source(s):</label> </p>
   
   	<select multiple id="DataSource" name = "dataSource" size="6">
-	<option name="k13" value="k13">K13</option>
-	<option name="r13" value="r13">R13</option>
+	<option name="k13r13" value="K13R13">K13R13</option>
+<!--	<option name="r13" value="r13">R13</option> 
+	<option name="k13" value="k13">K13R13</option>
+--!>
 	<option name="k02" value="k02">K02</option>
-	<option name="opb07" value="opb07">OPB07</option>
+	<option name="opb07" value="OPB07">OPB07</option>
 	<option name="n12" value="n12">N12</option>
 	</select>
 	
     </span>
   </td>
   <td><label>Model Type:</label> <select name="modelType" class="singleselect" id="modelType">
-      <option value="Type1">Type1 </option>
-      <option value="Type2">Type2 </option>
-      <option value="Type3">Type3 </option>
+      <option value="P14">P14 </option>
+      <option value="O14">O14 </option>
       </select>
   </td>
   <td> 
@@ -42,7 +43,7 @@
  
 
 <td>
-	<select name="AnalysisOptions" size="2">
+	<select name="AnalysisOptions" class="singleselect" id = "analysisOptions">
 	<option name="MCMC" value="MCMC">MCMC</option>
 	<option name="X" value="X">Chi square analysis</option>
 	</select>
