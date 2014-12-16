@@ -49,7 +49,7 @@ def do_response():
    	smtp.connect('smtp.gmail.com', 587)
    	smtp.starttls()
    	smtp.ehlo()
-	smtp.login('alfeinsod@gmail.com','mamabear112294')
+	
     	smtp.sendmail('alfeinsod@gmail.com', useremail, msg)
     	smtp.quit()
     	
