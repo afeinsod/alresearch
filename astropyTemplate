@@ -1,191 +1,87 @@
-<form name="xastropy" action="/formTest" method="post" enctype="multipart/form-data">
-This website is a resource for researchers in astrophysics. 
+<p><input name="click for basic physics" type="button" value="Click for Physics Explanation" /></p>
 
+<form action="/formTest" enctype="multipart/form-data" method="post" name="xastropy">
+<p>This website is a resource for researchers in astrophysics.</p>
 
-User Information:
+<p>User Information: This website is designed to take in data describing a Lyman-Alpha forest and output a best-fit model for the data. Users can choose from several different options provided by the website, as shown in the &quot;Data Sources&quot; section, and they may upload their own data if they would like to incorporate more information into the model. Users can choose between several different models and between different analysis options, and they can choose how the output is presented when it is emailed to them. Please press the button labeled &quot;View my choices&quot; to double check your selections before clicking the &quot;Submit&quot; button. After the submit button is clicked, an email will be sent to you in a few days. Please direct any questions about this website or its use to email@email.com.</p>
 
-This website is designed to take in data describing a Lyman-Alpha forest and 
-output a best-fit model for the data. Users can choose from several different 
-options provided by the website, as shown in the "Data Sources" section, and
- they may upload their own data if they would like to incorporate more 
- information into the model. Users can choose between several different 
- models and between different analysis options, and they can choose how 
- the output is presented when it is emailed to them. Please press the button 
- labeled "View my choices" to double check your selections before clicking 
- the "Submit" button. After the submit button is clicked, an email will be 
- sent to you in a few days. Please direct any questions about this website 
- or its use to email@email.com.
+<p>Please note, when uploading an additional data source, the document should be an ASCII file in the following format: 4 columns: N1, N2, f(N), and sigma. Each column should contain the data for those four variables, and no row should contain less than 4 data values, separated by spaces. Lines that are comments should have the symbol # as the first input in that line. See the example below.</p>
 
-Please note, when uploading an additional data source, the document should 
-be an ASCII file in the following format:
+<p># N1 N2 f(N)orig sigma</p>
 
-4 columns: N1, N2, f(N), and sigma. Each column should contain the data for 
-those four variables, and no row should contain less than 4 data values, 
-separated by spaces. Lines that are comments should have the symbol # as 
-the first input in that line. See the example below.
+<p>20.10 20.20 -21.37 0.02</p>
 
-# N1     N2    f(N)orig  sigma  
-20.10  20.20  -21.37  0.02
-20.20  20.30  -21.55  0.02
-20.30  20.40  -21.66  0.02
-20.40  20.50  -21.81  0.02
-20.50  20.60  -21.97  0.02
-20.60  20.70  -22.13  0.03
-20.70  20.80  -22.30  0.03
-20.80  20.90  -22.49  0.03
-20.90  21.00  -22.63  0.03
-21.00  21.10  -22.85  0.04
+<p>20.20 20.30 -21.55 0.02</p>
 
-Elementary Physics Information: 
+<p>20.30 20.40 -21.66 0.02</p>
 
-In Physics, we can use the <i>redshift</i> as a way to measure distances
-and time in the universe. <i>Redshift</i> is the effect of our growing 
-universe on the wavelength of light we observe from far away. The relative
-speed of two galaxies moving away from each other is the redshift. 
+<p>20.40 20.50 -21.81 0.02</p>
 
-Observable light sources with high redshifts are far away. Because they are 
-so far, the shift in the wavelength is enough that we can observe phase 
-shifts in the hydrogen atom. When a hydrogen atom transitions from n=2 to 
-n=1 orbital, it emits light with a very small wavelength, called the <i>Lyman-
-alpha line</i>. We can only observe this light from very far away, because we
-need the redshift to make the light visible to our telescopes. 
+<p>20.50 20.60 -21.97 0.02</p>
 
-We can use the Lyman-alpha line to locate gas clouds. If the light is emitted 
-from a far off galaxy and passes through a gas cloud before getting to our
-telescope, we notice a gap in the light at that specific wavelength. This is
-called an <i>absorption line</i>, because the light is absorbed (really, sent
-off in a different direction) by the cloud. 
+<p>20.60 20.70 -22.13 0.03</p>
 
-The <i>intergalactic medium</i> is the matter that exists in the spaces between
-galaxies. When we detect light from far-off sources, they go through the 
-intergalactic medium, and thus there are many absorption lines for the many 
-gas clouds it passes through. All the lines together are called the Lyman-alpha
-forest. From observation of these lines, we can create a model for the function
-that graphs these curves. This website is designed to allow a researcher to 
-select from previously observed data, or upload her or his own data, and create
-a model for it. Users can choose between different sources, different model 
-types, different ways of analyzing the data, and different ways for the output
-to be formatted. The information will then be emailed to the user. 
+<p>20.70 20.80 -22.30 0.03</p>
 
-<div class="row"><h1 class="span6">Astronomy Analysis</h1></div>
+<p>20.80 20.90 -22.49 0.03</p>
+
+<p>20.90 21.00 -22.63 0.03</p>
+
+<p>21.00 21.10 -22.85 0.04</p>
+
+<p>&nbsp;</p>
+
+<p>Elementary Physics Information: In Physics, we can use the <i>redshift</i> as a way to measure distances and time in the universe. <i>Redshift</i> is the effect of our growing universe on the wavelength of light we observe from far away. The relative speed of two galaxies moving away from each other is the redshift. Observable light sources with high redshifts are far away. Because they are so far, the shift in the wavelength is enough that we can observe phase shifts in the hydrogen atom.</p>
+
+<p>When a hydrogen atom transitions from n=2 to n=1 orbital, it emits light with a very small wavelength, called the <i>Lyman- alpha line</i>. We can only observe this light from very far away, because we need the redshift to make the light visible to our telescopes. We can use the Lyman-alpha line to locate gas clouds. If the light is emitted from a far off galaxy and passes through a gas cloud before getting to our telescope, we notice a gap in the light at that specific wavelength. This is called an <i>absorption line</i>, because the light is absorbed (really, sent off in a different direction) by the cloud.</p>
+
+<p>The <i>intergalactic medium</i> is the matter that exists in the spaces between galaxies. When we detect light from far-off sources, they go through the intergalactic medium, and thus there are many absorption lines for the many gas clouds it passes through. All the lines together are called the Lyman-alpha forest. From observation of these lines, we can create a model for the function that graphs these curves. This website is designed to allow a researcher to select from previously observed data, or upload her or his own data, and create a model for it. Users can choose between different sources, different model types, different ways of analyzing the data, and different ways for the output to be formatted. The information will then be emailed to the user.</p>
+
+<div class="row">
+<h1 class="span6">Astronomy Analysis</h1>
+</div>
 
 <table border="1" class="table span12">
-<thead>
-  <tr>
-  
-  <th id="dataChoices"><center>Data Choices</center>
-  </th>
-  <th id="modelChoices"><center>Model Choices</center>
-  </th>
-  <th id="modelDepOpt"><center>Model-Dependant Options</center> </th>
-  <th id="analysisOptions"><center>Analysis Options</center></th>
-  <th id="outputOptions"><center>Output Options</center>
-  </th>
-  
-</tr></thead>
-<tbody>
-<tr class>
-  <td><span><p><label class="">Choose data source(s):</label> </p>
-  
-  	<select multiple id="DataSource" name = "dataSource" size="6">
-	<option name="k13" value="k13">K13</option>
-	<option name="r13" value="r13">R13</option>
-	<option name="k02" value="k02">K02</option>
-	<option name="opb07" value="opb07">OPB07</option>
-	<option name="n12" value="n12">N12</option>
-	</select>
-	
-    </span>
-  </td>
-  <td><label>Model Type:</label> <select name="modelType" class="singleselect" id="modelType">
-      <option value="Type1">Type1 </option>
-      <option value="Type2">Type2 </option>
-      <option value="Type3">Type3 </option>
-      </select>
-  </td>
-  <td> 
-      <p>User email: <input type="text" name="useremail"></p>
-  </td>
- 
-
-<td>
-	<select name="AnalysisOptions" class="singleselect" id="analysis">
-	<option name="MCMC" value="MCMC">MCMC</option>
-	<option name="X" value="X">Chi square analysis</option>
-	</select>
- </td>
- 
- <td>
- <select name="OutputOptions" class="singleselect" id="output">
-	<option name="config" value="config">config</option>
-	<option name="dtable" value="dtable">Data Table</option>
-	</select>
- </td>
- </tr>
- 
-</tbody>
+	<thead>
+		<tr>
+			<th id="dataChoices">
+			<center>Data Choices</center>
+			</th>
+			<th id="modelChoices">
+			<center>Model Choices</center>
+			</th>
+			<th id="analysisOptions">
+			<center>Analysis Options</center>
+			</th>
+			<th id="outputOptions">
+			<center>Output Options</center>
+			</th>
+			<th id="modelDepOpt">
+			<center>User Email</center>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+			<p><span><label>Choose data source(s):</label> </span></p>
+			<span><select id="DataSource" multiple="multiple" name="dataSource" size="6"><option name="k13" value="k13">K13</option><option name="r13" value="r13">R13</option><option name="k02" value="k02">K02</option><option name="opb07" value="opb07">OPB07</option><option name="n12" value="n12">N12</option> </select> </span></td>
+			<td><label>Model Type:</label> <select class="singleselect" id="modelType" name="modelType"><option value="Type1">Type1</option><option value="Type2">Type2</option><option value="Type3">Type3</option> </select></td>
+			<td><select class="singleselect" id="analysis" name="AnalysisOptions"><option name="MCMC" value="MCMC">MCMC</option><option name="X" value="X">Chi square analysis</option> </select></td>
+			<td><select class="singleselect" id="output" name="OutputOptions"><option name="config" value="config">config</option><option name="dtable" value="dtable">Data Table</option> </select></td>
+			<td>
+			<p>User email: <input name="useremail" type="text" /></p>
+			</td>
+		</tr>
+	</tbody>
 </table>
-<input type="submit" value="Submit data for analysis"/> 
-<button type="button" onclick="showData()">Show my data selections</button>
- 
-<script language="Javascript" type="text/javascript">
+<input type="submit" value="Submit data for analysis" /><button onclick="showData()" type="button">Show my data selections</button>&nbsp;
 
-function showData() {
-var x = document.getElementById("DataSource").options;
-var txta = "Data Sources: "
-for (i = 0; i < x.length; i ++) {
-	if (x[i].selected == true) {
-		txta += x[i].text + " "
-	}
-}
-document.getElementById("showdatasources").innerHTML = txta;
-
-var y = document.getElementById("modelType").options;
-var txtb = "Model Type: "
-for (i = 0; i < y.length; i ++) {
-	if (y[i].selected == true) {
-		txtb += y[i].text + " "
-	}
-}
-document.getElementById("showmodel").innerHTML = txtb;
-
-var z = document.getElementById("analysis").options;
-var txtc = "Analysis: "
-for (i = 0; i < z.length; i ++) {
-	if (z[i].selected == true) {
-		txtc += z[i].text + " "
-	}
-}
-document.getElementById("showanalysis").innerHTML = txtc;
-
-var zz = document.getElementById("output").options;
-var txtd = "Output: "
-for (i = 0; i < zz.length; i ++) {
-	if (zz[i].selected == true) {
-		txtd += zz[i].text + " "
-	}
-}
-document.getElementById("showoutput").innerHTML = txtd;
-}
-	
-</script>
-
-<p id="showdatasources"> </p>
-<p id="showmodel"> </p>
-<p id="showanalysis"> </p>
-<p id="showoutput"> </p>
+<p id="showoutput">&nbsp;</p>
 </form>
 
-
-<br/><br/>
- 		<form name="uploadForm">
-		  Optional: upload your own source file. 
-	  	  File Name:      <input type="text" name="filename" id ="filename"/>
-	  	  Select a file: <input type="file" name="upload" />
-	  	  <button type="button" onclick="myFunction()">Upload File</button>
-	  	  </form>
-	  	  
-	  	  <script language="Javascript" type="text/javascript">
+<form name="uploadForm">Optional: upload your own source file. File Name: <input id="filename" name="filename" type="text" /> Select a file: <input name="upload" type="file" /><button onclick="myFunction()" type="button">Upload File</button></form>
+<script language="Javascript" type="text/javascript">
 function myFunction() { 
 var x = document.getElementById("DataSource");
 var option = document.createElement("option");
@@ -196,4 +92,3 @@ x.add(option);
 }
 	
 </script>
-
