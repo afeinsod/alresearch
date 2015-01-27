@@ -76,7 +76,53 @@
 	</tbody>
 </table>
 <input type="submit" value="Submit data for analysis" /><button onclick="showData()" type="button">Show my data selections</button>&nbsp;
+<button type="button" onclick="showData()">Show my data selections</button>
+ 
+<script language="Javascript" type="text/javascript">
 
+function showData() {
+var x = document.getElementById("DataSource").options;
+var txta = "Data Sources: "
+for (i = 0; i < x.length; i ++) {
+	if (x[i].selected == true) {
+		txta += x[i].text + " "
+	}
+}
+document.getElementById("showdatasources").innerHTML = txta;
+
+var y = document.getElementById("modelType").options;
+var txtb = "Model Type: "
+for (i = 0; i < y.length; i ++) {
+	if (y[i].selected == true) {
+		txtb += y[i].text + " "
+	}
+}
+document.getElementById("showmodel").innerHTML = txtb;
+
+var z = document.getElementById("analysis").options;
+var txtc = "Analysis: "
+for (i = 0; i < z.length; i ++) {
+	if (z[i].selected == true) {
+		txtc += z[i].text + " "
+	}
+}
+document.getElementById("showanalysis").innerHTML = txtc;
+
+var zz = document.getElementById("output").options;
+var txtd = "Output: "
+for (i = 0; i < zz.length; i ++) {
+	if (zz[i].selected == true) {
+		txtd += zz[i].text + " "
+	}
+}
+document.getElementById("showoutput").innerHTML = txtd;
+}
+	
+</script>
+
+<p id="showdatasources"> </p>
+<p id="showmodel"> </p>
+<p id="showanalysis"> </p>
 <p id="showoutput">&nbsp;</p>
 </form>
 
