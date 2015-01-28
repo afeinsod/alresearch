@@ -1,7 +1,7 @@
 ## Alix Feinsod
 ## Python form using template
-## Updated January 20th, 2015
-## uses astropyTemplate to take in data!!!
+## Updated January 27th, 2015
+## uses astropyTemplate to take in data
 
 from bottle import route, run, template, post, request
 import smtplib, os
@@ -17,9 +17,15 @@ from xastropy.stats import mcmc
 from xastropy.igm.fN import data as fNdata
 from xastropy.xutils import xdebug as xdb
 
+from bottle import static_file
 
-@route('/astropy')
-def formTest():
+
+@route('/static/<filename>')
+def server_static(filename):
+    return static_file(filename, root='')
+    
+@route('/astropy')    
+def form():
     return template('astropyTemplate')
  
 # Runs on click of "Submit data"
@@ -65,7 +71,7 @@ def do_response():
    		smtp.connect('smtp.gmail.com', 587)
    		smtp.starttls()
    		smtp.ehlo()
-
+		smtp.login('alfeinsod@gmail.com','delicious112294')
     		smtp.sendmail('alfeinsod@gmail.com', useremail, msg.as_string())
     		smtp.quit()
     	
