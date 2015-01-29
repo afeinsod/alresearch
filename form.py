@@ -47,7 +47,7 @@ def do_response():
 		time = mcmc.test()
 		msg = MIMEMultipart()
 		msg['Subject'] = "Email data"
-		msg['From'] = 'alfeinsod@gmail.com'
+		msg['From'] = ''
 		msg['To'] = useremail
 		msg.attach( MIMEText(str(time)))
 	
@@ -66,7 +66,7 @@ def do_response():
    		smtp.starttls()
    		smtp.ehlo()
 	
-    		smtp.sendmail('alfeinsod@gmail.com', useremail, msg.as_string())
+    		smtp.sendmail('', useremail, msg.as_string())
     		smtp.quit()
     	
 		return "Processing your request. Results will be sent to '{0}' in a few hours or days.".format(useremail)
