@@ -70,8 +70,8 @@ def do_response():
    		smtp = smtplib.SMTP()
    		smtp.connect('smtp.gmail.com', 587)
    		smtp.starttls()
-   		
-    		smtp.sendmail('alfeinsod@gmail.com', useremail, msg.as_string())
+   		stmp.login('xastropy@gmail.com','ucsc2015')
+    		smtp.sendmail('xastropy@gmail.com', useremail, msg.as_string())
     		smtp.quit()
     	
 		return "Processing your request. Results will be sent to '{0}' in a few hours or days.".format(useremail)
