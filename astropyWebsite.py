@@ -53,7 +53,7 @@ def do_response():
 		time = mcmc.test()
 		msg = MIMEMultipart()
 		msg['Subject'] = "Email data"
-		msg['From'] = 'alfeinsod@gmail.com'
+		msg['From'] = 'xastropy@gmail.com'
 		msg['To'] = useremail
 		msg.attach( MIMEText(str(time)))
 	
