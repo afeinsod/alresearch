@@ -17,11 +17,20 @@ body {
 <form action="/astropy" enctype="multipart/form-data" method="post" name="astropy">
 <p>This website is a resource for researchers in astrophysics.</p>
 
-<p>User Information: This website is designed to take in data describing a Lyman-Alpha forest and output a best-fit model for the data. Users can choose from several different options provided by the website, as shown in the &quot;Data Sources&quot; section, and they may upload their own data if they would like to incorporate more information into the model. Users can choose between several different models and between different analysis options, and they can choose how the output is presented when it is emailed to them. Please press the button labeled &quot;View my choices&quot; to double check your selections before clicking the &quot;Submit&quot; button. After the submit button is clicked, an email will be sent to you in a few days. Please direct any questions about this website or its use to email@email.com.</p>
+<p>User Information: This website is designed to take in data describing a Lyman-Alpha forest and output a best-fit model for
+ the data. Users can choose from several different options provided by the website, as shown in the &quot;Data Sources&quot; 
+section, and they may upload their own data if they would like to incorporate more information into the model. Users can
+ choose between several different models and between different analysis options, and they can choose how the output is 
+presented when it is emailed to them. Please press the button labeled &quot;View my choices&quot; to double check your 
+selections before clicking the &quot;Submit&quot; button. After the submit button is clicked, an email will be sent to you in
+ a few days. Please direct any questions about this website or its use to email@email.com.</p>
 
-<p>Please note, when uploading an additional data source, the document should be an ASCII file in the following format: 4 columns: N1, N2, f(N), and sigma. Each column should contain the data for those four variables, and no row should contain less than 4 data values, separated by spaces. Lines that are comments should have the symbol # as the first input in that line. See the example below.</p>
+<p>Please note, when uploading an additional data source, the document should be an ASCII file in the following format: First
+ line has 2 data items separated by a space, z value (redshift) and Dx(how much the universe has changed). The rest of the lines
+ consists of 4 columns: N1, N2, f(N), and sigma. Each column should contain the data for those four variables, and no row should
+ contain less than 4 data values, separated by spaces. See the example below.</p>
 
-<p># N1 N2 f(N)orig sigma</p>
+<p> 3 14 </p>
 
 <p>20.10 20.20 -21.37 0.02</p>
 
