@@ -71,25 +71,26 @@ class fN_Constraint(object):
 	#get zeval and dx from first line
 	values = firstline.split()
 	self.zeval = values[0]
-	#TODO: what do I store that dx as? It represents change in the universe...
+	dx = values[1]
+	#TODO: is that the correct name?
 
 	#declaration of variables
-	arrayn1n2 =[]
-	arrayfN = []
-	arraySigfN = []
+	BINS =[]
+	FN = []
+	SIG_FN = []
 
 	# Loop over lines and extract info
 	for line in f:
     		line = line.strip()
     		columns = line.split()
-    		arrayn1n2.append(columns[1], columns[2])
-		arrayfN.append(columns[3])
-		arraySigfN.append(columns[4])
+    		BINS.append(columns[1], columns[2])
+		FN.append(columns[3])
+		aSIG_FN.append(columns[4])
 
 	f.close()
 	#How do I get these arrays to go into self.data correctly? Is this even close?	
-	arrayofnames = ['arrayn1n2','arrayfN', 'arraySigfN']
-	arrayofarrays = [arrayn1n2, arrayfN, arraySigfN]
+	arrayofnames = ['BINS','FN', 'SIG_FN', 'dx']
+	arrayofarrays = [BINS,FN, SIG_FN, dx]
 	self.data = dict(zip(arrayofnames, arrayofarrays))
 	
 	#no ref, flavor, type, or cosm
