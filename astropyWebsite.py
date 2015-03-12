@@ -57,7 +57,10 @@ def do_response():
 		useremail   = request.forms.get('useremail')
 
 		fN_data = mcmc.set_fn_data(sources, extraSources)
-		fN_model = mcmc.set_fn_model() 
+		if modelType == 'Original Model'
+			fN_model = mcmc.set_fn_model() 
+		else:
+			fN_model = mcmc.set_fn_model(1)
 		parm = mcmc.set_pymc_var(fN_model)
 		fN_model.param = mcmc.np.array([iparm.value for iparm in parm])
 		mcmc.run(fN_data, fN_model, parm, useremail)
