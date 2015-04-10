@@ -1,6 +1,6 @@
 ## Alix Feinsod
 ## Python form using template
-## Updated March 5th, 2015
+## Updated April 10th, 2015
 ## uses astropyTemplate to take in data
 
 from bottle import route, run, template, post, request
@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 from email import encoders
 from array import array
-
+from email.mime.application import MIMEApplication
 
 from xastropy.igm.fN import mcmc 
 from xastropy.igm.fN import data as fNdata
@@ -56,42 +56,45 @@ def do_response():
 		output = outputs[0] # string
 		useremail   = request.forms.get('useremail')
 
-		fN_data = mcmc.set_fn_data(sources, extraSources)
-		if modelType == 'Original Model'
-			fN_model = mcmc.set_fn_model() 
+		#fN_data = mcmc.set_fn_data(sources, extraSources)
+		if modelType is 'Akio Model':
+			mcmc.mcmc_main(useremail, sources, extraSources, 1)
+			#fN_model = mcmc.set_fn_model(1) 
 		else:
-			fN_model = mcmc.set_fn_model(1)
-		parm = mcmc.set_pymc_var(fN_model)
-		fN_model.param = mcmc.np.array([iparm.value for iparm in parm])
-		mcmc.run(fN_data, fN_model, parm, useremail)
+			mcmc.mcmc_main(useremail, sources, extraSources)
+			#fN_model = mcmc.set_fn_model()
+		#parm = mcmc.set_pymc_var(fN_model)
+		#fN_model.param = mcmc.np.array([iparm.value for iparm in parm])
+		#mcmc.run(fN_data, fN_model, parm, useremail)
 		
-		import pdb
-		pdb.set_trace()
+		#import pdb
+		#pdb.set_trace()
 		#fNdata.tst_fn_data(outfil='tmp.png', data_list=dataSources)
 		#fNdata.tst_fn_data(outfil='tmp.png', data_list=models)
 
-		time = mcmc.test()
+		#time = mcmc.test()
 		msg = MIMEMultipart()
 		msg['Subject'] = "Email data"
 		msg['From'] = 'xastropy@gmail.com'
 		msg['To'] = useremail
-		msg.attach( MIMEText(str(time)))
+		msg.attach( MIMEText(str('Hi!')))
 	
-		files = []
-		files.append('tmp.png')
+		files = os.listdir('C:/Xastropy Output Files/' + useremail)
 	
-    		for f in files:
+		for f in files:
         		part = MIMEBase('application', "octet-stream")
-        		part.set_payload( open(f,"rb").read() )
+        		part.set_payload( open('C:/Xastropy Output Files/' + useremail + '/' + f,"rb").read() )
         		encoders.encode_base64(part)
         		part.add_header('Content-Disposition', 'attachment; filename="{0}"'.format(os.path.basename(f)))
         		msg.attach(part)
    	
    		smtp = smtplib.SMTP()
-   		smtp.connect('smtp.gmail.com', 587)
+   		smtp.connect('smtp.aol.com', 587)
+   		smtp.ehlo()
    		smtp.starttls()
-   		smtp.login('xastropy@gmail.com','ucsc2015')
-    		smtp.sendmail('xastropy@gmail.com', useremail, msg.as_string())
+   		smtp.ehlo()
+   		smtp.login('xastropy@aol.com','ucsc2015')
+    		smtp.sendmail('xastropy@aol.com', useremail, msg.as_string())
     		smtp.quit()
     	
 		return "Processing your request. Results will be sent to '{0}' in a few hours or days.".format(useremail)
