@@ -36,6 +36,7 @@ def do_response():
 		msg['To'] = useremail
 		msg.attach( MIMEText(str('Hi!')))
 	##TODO: change this part to generating Dropbox folder with files in it and emailing the link
+	##resourse: https://www.dropbox.com/developers/core/docs/python
 		files = os.listdir('C:/Xastropy Output Files/' + useremail)
 	
 		for f in files:
