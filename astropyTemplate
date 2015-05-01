@@ -197,13 +197,18 @@ document.getElementById("showoutput").innerHTML = txtd;
 <script language="Javascript" type="text/javascript">
 function myFunction() { 
 http://stackoverflow.com/questions/19503878/loop-read-each-line-of-a-file-to-its-own-array
-
-
 var flag = true;
-
-first line: 2 ints else flag = false
-for rest of lines: 4 ints else flag = false
-
+var data=file(document.getElementById("upload"))
+var lines = data.split("\n");
+var firstline=lines[0].split(" ");
+if ((firstline.length != 2) || (!(firstline[0].instanceOf(int))) ||(!(firstline[1].instanceOf(int)))) {
+	flag = false;
+	}
+for (int i = 1; i <= lines.length; i++) {
+	ints = lines[i].split(" ");
+	if ((ints.length!=4) || (!(ints[0].instanceOf(int))) || (!(ints[1].instanceOf(int)))|| (!(ints[2].instanceOf(int)))|| (!(ints[3].instanceOf(int)))) {
+		flag=false;
+	}
 if (flag==false) {
 	document.getElementById("uploadresult").innerHTML = "Incorrect File format.";
 	}
