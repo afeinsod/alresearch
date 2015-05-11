@@ -190,37 +190,23 @@ document.getElementById("showoutput").innerHTML = txtd;
 <p id="showmodel"> </p>
 <p id="showanalysis"> </p>
 <p id="showoutput">&nbsp;</p>
-</form>
 
-<form name="uploadForm">Optional: upload your own source file. Select a file: <input name="upload" id="upload" type="file" /><button onclick="myFunction()" type="button">Upload File</button></form>
 <p id="uploadresult"></p>
+
+Optional: Upload your own source file. Select a file: <input input type="file" name="upload" id="upload"/>
+<button onclick="addfile()" type="button">Upload File</button>
+
 <script language="Javascript" type="text/javascript">
-function myFunction() { 
-http://stackoverflow.com/questions/19503878/loop-read-each-line-of-a-file-to-its-own-array
-var flag = true;
-var data=file(document.getElementById("upload"))
-var lines = data.split("\n");
-var firstline=lines[0].split(" ");
-if ((firstline.length != 2) || (!(firstline[0].instanceOf(int))) ||(!(firstline[1].instanceOf(int)))) {
-	flag = false;
-	}
-for (int i = 1; i <= lines.length; i++) {
-	ints = lines[i].split(" ");
-	if ((ints.length!=4) || (!(ints[0].instanceOf(int))) || (!(ints[1].instanceOf(int)))|| (!(ints[2].instanceOf(int)))|| (!(ints[3].instanceOf(int)))) {
-		flag=false;
-	}
-if (flag==false) {
-	document.getElementById("uploadresult").innerHTML = "Incorrect File format.";
-	}
-else {
-	document.getElementById("uploadresult").innerHTML = "File successfully uploaded. Option added to data sources above.";
+
+function addfile() { 
+	document.getElementById("uploadresult").innerHTML = "User Upload Option added to data sources above.";
 	var x = document.getElementById("DataSource");
 	var option = document.createElement("option");
-	var y = document.uploadForm.upload.value;
+	var y = document.getElementById("upload").value;
 	option.text = y;
 	option.name = y;
-	x.add(option);
-	}
+	x.add(option);	
 }
 	
 </script>
+</form>
