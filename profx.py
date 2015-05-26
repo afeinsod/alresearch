@@ -19,7 +19,10 @@ from xastropy.xutils import xdebug as xdb
 
 from bottle import static_file
 
-def do_response():
+from dbupload import upload_file, DropboxConnection
+from getpass import getpass
+
+def runmcmcemail():
 
   ##Get variables somehow from server
   ##+file upload if necessary
@@ -29,22 +32,23 @@ def do_response():
 			#fN_model = mcmc.set_fn_model(1) 
 		else:
 			mcmc.mcmc_main(useremail, sources, extraSources)
-		
+	
+		files = os.listdir('C:/Xastropy Output Files/' + useremail)
+
+		conn = DropboxConnection("alfeinsod@gmail.com", "igmfnucsc")
+
+		for f in files:
+        		conn.upload_file(f,"/IGM/"+useremail,f)
+
+		dropboxLink = conn.get_public_url("/IGM/"+useremail)
+
 		msg = MIMEMultipart()
-		msg['Subject'] = "Email data"
+		msg['Subject'] = "IGMFN"
 		msg['From'] = 'xastropy@aol.com'
 		msg['To'] = useremail
-		msg.attach( MIMEText(str('Hi!')))
-	##TODO: change this part to generating Dropbox folder with files in it and emailing the link
-	##resourse: https://www.dropbox.com/developers/core/docs/python
-		files = os.listdir('C:/Xastropy Output Files/' + useremail)
+		msg.attach( MIMEText(str('Hello, \nYou can access the results from igmfn.ucolick.org here: ' + dropboxLink)))
+
 	
-		for f in files:
-        		part = MIMEBase('application', "octet-stream")
-        		part.set_payload( open('C:/Xastropy Output Files/' + useremail + '/' + f,"rb").read() )
-        		encoders.encode_base64(part)
-        		part.add_header('Content-Disposition', 'attachment; filename="{0}"'.format(os.path.basename(f)))
-        		msg.attach(part)
    	
    		smtp = smtplib.SMTP()
    		smtp.connect('smtp.aol.com', 587)
@@ -54,7 +58,15 @@ def do_response():
    		smtp.login('xastropy@aol.com','ucsc2015')
     		smtp.sendmail('xastropy@aol.com', useremail, msg.as_string())
     		smtp.quit()
-    	
-		return "Processing your request. Results will be sent to '{0}' in a few hours or days.".format(useremail)
 
-run(host='0.0.0.0', port=8080)
+if __name__ == '__main__':
+
+	import argparse
+
+    	# PARSE 
+    	parser = argparse.ArgumentParser(description='profx code for igmfn')
+    	parser.add_argument("infile", type=string, help="Name of input ascii file")
+    	args = parser.parse_args()
+	infile=args.infile
+	#now read in file to get modelType, useremail, sources, extraSources
+        #and use this to properly call runmcmcemail
