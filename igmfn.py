@@ -36,8 +36,6 @@ def do_response():
 				upload = request.files.get('upload')
 				flag = True
 				f=upload.file.read()
-				import pdb
-				pdb.set_trace()
 				lines = f.split("\n")
 				
 				firstline=lines[0].split(" ")
@@ -45,16 +43,20 @@ def do_response():
 				if len(firstline) != 2:
 					flag = False
 				for i in firstline:
-					if type(i) is not float:
-						flag = False
+					try:
+    						float(i)
+  					except ValueError:
+    						flag= False
 						
 				for i in range(1, len(lines) -1):
 					line = lines[i].split(" ") 
 					if len(line) != 4:
 						flag = False
 					for a in line:
-						if type(a) is not float:
-							flag = False
+						try:
+    							float(i)
+  						except ValueError:
+    							flag= False
 				
 				if flag is False:
 					return "Wrong file format."
@@ -92,9 +94,24 @@ def do_response():
 			#copies all user uploads to that directory
 			for src in extraSources:
 				p=subprocess.call(['scp', src, 'profx:/Users/afeinsod/' + useremail])
-		COMMAND = 'python profx.py ' + modelType + analysis + output + useremail 
+		#write user parameters to file	
+		target = open(useremail + 'selections.txt', 'w')
+		target.write(modelType)
+		target.write("\n")
+		target.write(useremail)
+		target.write("\n")
 		for src in sources:
-			COMMAND = COMMAND + src
+			target.write(src)
+		target.write("\n")
+		for src in extraSources:
+			target.write(src)
+		target.close()
+		
+		p=subprocess.call(['scp', useremail + 'selections.txt', 'profx:/Users/afeinsod/Documents'])
+		
+		COMMAND = 'python profx.py ' + useremail + 'selections.txt'
+		
+		HOST = 'afeinsod@profx'
 		process=subprocess.Popen(["ssh", "-C", "%s" % HOST, COMMAND])
 				
 		return "Processing your request. Results will be sent to '{0}' in a few hours or days.".format(useremail)
