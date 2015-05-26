@@ -22,14 +22,10 @@ from bottle import static_file
 from dbupload import upload_file, DropboxConnection
 from getpass import getpass
 
-def runmcmcemail():
-
-  ##Get variables somehow from server
-  ##+file upload if necessary
+def runmcmcemail(modelType, useremail, sources, extraSources):
 		
 		if modelType is 'Akio Model':
 			mcmc.mcmc_main(useremail, sources, extraSources, 1)
-			#fN_model = mcmc.set_fn_model(1) 
 		else:
 			mcmc.mcmc_main(useremail, sources, extraSources)
 	
@@ -46,10 +42,8 @@ def runmcmcemail():
 		msg['Subject'] = "IGMFN"
 		msg['From'] = 'xastropy@aol.com'
 		msg['To'] = useremail
-		msg.attach( MIMEText(str('Hello, \nYou can access the results from igmfn.ucolick.org here: ' + dropboxLink)))
+		msg.attach( MIMEText(str('Hello, \nYou can access your results from igmfn.ucolick.org here: ' + dropboxLink)))
 
-	
-   	
    		smtp = smtplib.SMTP()
    		smtp.connect('smtp.aol.com', 587)
    		smtp.ehlo()
@@ -68,5 +62,18 @@ if __name__ == '__main__':
     	parser.add_argument("infile", type=string, help="Name of input ascii file")
     	args = parser.parse_args()
 	infile=args.infile
+	
 	#now read in file to get modelType, useremail, sources, extraSources
         #and use this to properly call runmcmcemail
+        
+        #format: firstline = modelType, second = useremail, third = sources split by spaces,
+        #fourth = extrasources split by spaces
+        
+        f=infile.read()
+	lines = f.split("\n")
+				
+	modelType=lines[0].split(" ")
+	useremail=lines[1]
+	sources=lines[2].split(" ")
+	extraSources=lines[3].split(" ")
+	runmcmcemail(modelType, useremail, sources, extraSources)
