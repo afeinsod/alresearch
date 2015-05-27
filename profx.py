@@ -18,9 +18,7 @@ from xastropy.igm.fN import data as fNdata
 from xastropy.xutils import xdebug as xdb
 
 from bottle import static_file
-
-from dbupload import upload_file, DropboxConnection
-from getpass import getpass
+import shutil
 
 def runmcmcemail(modelType, useremail, sources, extraSources):
 		
@@ -31,18 +29,24 @@ def runmcmcemail(modelType, useremail, sources, extraSources):
 	
 		files = os.listdir('C:/Xastropy Output Files/' + useremail)
 
-		conn = DropboxConnection("alfeinsod@gmail.com", "igmfnucsc")
-
+		path = '/Users/afeinsod/Dropbox/Output/'
+		if os.path.isdir(path + useremail):  
+            		path = path +  useremail
+        	else:
+            		os.mkdir(path + useremail) 
+            		path = path +  useremail
+            		
 		for f in files:
-        		conn.upload_file(f,"/IGM/"+useremail,f)
+			oldpath = os.path.abspath(f)
+        		shutil.copy2(oldpath, path)
 
-		dropboxLink = conn.get_public_url("/IGM/"+useremail)
+		dropboxLink = 'https://www.dropbox.com/sh/lokufndo4gc7mbz/AACFRsF5qewnni8f4AYoUg8ka?dl=0'
 
 		msg = MIMEMultipart()
 		msg['Subject'] = "IGMFN"
 		msg['From'] = 'xastropy@aol.com'
 		msg['To'] = useremail
-		msg.attach( MIMEText(str('Hello, \nYou can access your results from igmfn.ucolick.org here: ' + dropboxLink)))
+		msg.attach( MIMEText(str('Hello, \nYou can access your results from igmfn.ucolick.org here: ' + dropboxLink + ' in the folder ladeled with your email. \nBest, \n UCO/Lick')))
 
    		smtp = smtplib.SMTP()
    		smtp.connect('smtp.aol.com', 587)
