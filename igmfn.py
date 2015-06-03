@@ -1,24 +1,20 @@
-## Alix Feinsod
-## Python form using template
-## Updated April 22nd, 2015
-## uses astropyTemplate to take in data
-
-from bottle import route, run, template, post, request
+from flask import Flask, render_template, request
 import smtplib, os
 import commands
-from bottle import static_file
 import subprocess
+app = Flask(__name__, static_url_path='')
 
-@route('/static/<filename>')
-def server_static(filename):
-    return static_file(filename, root='')
-    
-@route('/astropy')    
+app.debug = True
+
+#@app.route('/static/<filename>')
+#def server_static(filename):
+#    return static_file(filename, root='')
+
+@app.route('/')    
 def form():
-    return template('astropyTemplate')
- 
-# Runs on click of "Submit data"
-@route('/astropy', method='POST')
+    return render_template('igmfnTemplate.html')
+
+@app.route('/', methods=['POST'])
 def do_response():
 	useremail   = request.forms.get('useremail')
 	dataSources = request.forms.getall('dataSource') # Grabs everything selected in a selection list
@@ -94,26 +90,27 @@ def do_response():
 			#copies all user uploads to that directory
 			for src in extraSources:
 				p=subprocess.call(['scp', src, 'profx:/Users/afeinsod/' + useremail])
-		#write user parameters to file	
-		target = open(useremail + 'selections.txt', 'w')
-		target.write(modelType)
-		target.write("\n")
-		target.write(useremail)
-		target.write("\n")
+		
+
+		##next, make ascii file to transfer info
+		infofile = open(infofile.txt, 'w')
+		infofile.write(modelType)
+		infofile.write('/n')
+		infofile.write(useremail)
+		infofile.write('/n')
 		for src in sources:
-			target.write(src)
-		target.write("\n")
+			infofile.write(src)
+		infofile.write('/n')
 		for src in extraSources:
-			target.write(src)
-		target.close()
-		
-		p=subprocess.call(['scp', useremail + 'selections.txt', 'profx:/Users/afeinsod/Documents'])
-		
-		COMMAND = 'python profx.py ' + useremail + 'selections.txt'
-		
+			infofile.write(src)
+		infofile.close()
+		p=subprocess.call(['scp', infofile, 'profx:/Users/afeinsod'])
+		COMMAND = 'python profx.py infofile' 
 		HOST = 'afeinsod@profx'
 		process=subprocess.Popen(["ssh", "-C", "%s" % HOST, COMMAND])
 				
 		return "Processing your request. Results will be sent to '{0}' in a few hours or days.".format(useremail)
 
-run(host='0.0.0.0', port=8080)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
